@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Graphics {
 
   public void pline(Object printedLine) { // Prints line
@@ -18,9 +20,17 @@ public class Graphics {
     System.out.print(printedText);
   }
 
-  public static void clearScreen() {  
+  public void clearScreen() { 
     System.out.print("\033[H\033[2J");  
     System.out.flush();  
+  }  
+
+  public void enterCont() { 
+    Scanner userin = new Scanner(System.in);
+    print(YELLOW);
+    System.out.println("Press [Enter] to continue.");
+    String enter = userin.nextLine();
+    print(RESET);
   }  
 
     // Reset
@@ -95,5 +105,18 @@ public class Graphics {
     public static final String PURPLE_BG_L = "\033[0;105m"; // PURPLE
     public static final String CYAN_BG_L = "\033[0;106m";  // CYAN
     public static final String WHITE_BG_L = "\033[0;107m";   // WHITE
+
+  public String[] properties = {"<<GO>>", "Baltic Ave.", "Community Chest", "Reading Railroad", "Chance", "Vermont Ave.", "<JAILHOUSE>", "St.Charles Place", "Community Chest", "Pennyslvania Railroad", "Community Chest", "St.James Place", "<PARKING>", "Kentucky Ave.", "Chance", "B&O Railroad", "Chance", "Marvin Garden", "<<GO TO JAIL>>", "Park Place", "Community Chest", "Short Line", "Chance", "Boardwalk"}; //0 ~ 23
+
+  public void printBoard (int PlayerIndexx) {
+    for (int i = 1; i <= properties.length; i++) {
+      print(i + ".  " + properties[i-1]);
+      print("");
+    }
+  }
+
+
+
+  
   }
 
